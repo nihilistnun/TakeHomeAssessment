@@ -5,7 +5,8 @@ import com.nicholasnkk.test.service.FeatureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Collections;
+import java.util.Map;
 
 @RequestMapping("feature")
 @RestController
@@ -23,8 +24,9 @@ public class FeatureController {
         featureService.addFeature(feature);
     }
 
-    @GetMapping
-    public boolean getAccessRights(@RequestParam("email") String email,@RequestParam("featureName") String featureName) {
-        return featureService.getAccessRights(email, featureName);
+    @RequestMapping
+    @ResponseBody
+    public Map<String, Boolean> getAccessRights(@RequestParam("email") String email, @RequestParam("featureName") String featureName) {
+        return Collections.singletonMap("canAccess", featureService.getAccessRights(email, featureName));
     }
 }
