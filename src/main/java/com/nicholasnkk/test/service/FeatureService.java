@@ -22,7 +22,7 @@ public class FeatureService {
         return featureDAO.insertFeature(feature);
     }
 
-    public List<Feature> getAllFeatures() {
-        return featureDAO.selectAllPeople();
+    public boolean getAccessRights(String email, String featureName) {
+        return featureDAO.getAccessRights(email, featureName);
     }
 }

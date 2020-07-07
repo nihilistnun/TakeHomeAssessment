@@ -8,5 +8,5 @@ public interface FeatureDAO {
 
     int insertFeature(Feature feature);
 
-    List<Feature> selectAllPeople();
+    boolean getAccessRights(String email, String featureName);
 }

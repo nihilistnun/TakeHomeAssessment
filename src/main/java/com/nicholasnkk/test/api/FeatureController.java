@@ -24,7 +24,7 @@ public class FeatureController {
     }
 
     @GetMapping
-    public List<Feature> getAllPeople() {
-        return featureService.getAllFeatures();
+    public boolean getAccessRights(@RequestParam("email") String email,@RequestParam("featureName") String featureName) {
+        return featureService.getAccessRights(email, featureName);
     }
 }
